@@ -238,12 +238,6 @@ export default function HomePage() {
     },
   ]
 
-  const stats = [
-    { number: "25,000+", label: "Successful Surgeries", icon: CheckCircle },
-    { number: "15+", label: "Years of Excellence", icon: Award },
-    { number: "50+", label: "Expert Doctors", icon: Users },
-    { number: "98%", label: "Success Rate", icon: Star },
-  ]
 
   return (
     <div className="min-h-screen">
@@ -462,43 +456,6 @@ export default function HomePage() {
           </Button>
         </motion.div>
       </section>
-
-      {/* UPDATED: Stats Section with Animations */}
-      <AnimatedSection>
-        <section className="py-12 bg-blue-600">
-          <div className="container mx-auto px-4">
-            <StaggeredContainer className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {stats.map((stat, index) => (
-                <StaggeredItem key={index}>
-                  <motion.div
-                    className="text-center text-white"
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.div
-                      className="flex justify-center mb-2"
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: index * 0.2 }}
-                    >
-                      <stat.icon className="w-8 h-8" />
-                    </motion.div>
-                    <motion.div
-                      className="text-2xl md:text-3xl font-bold mb-1"
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      {stat.number}
-                    </motion.div>
-                    <div className="text-sm md:text-base opacity-90">{stat.label}</div>
-                  </motion.div>
-                </StaggeredItem>
-              ))}
-            </StaggeredContainer>
-          </div>
-        </section>
-      </AnimatedSection>
 
       {/* UPDATED: Services Section with Enhanced Animations */}
       <AnimatedSection>
