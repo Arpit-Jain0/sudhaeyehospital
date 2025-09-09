@@ -1,0 +1,328 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* UPDATED: Enhanced Button Styles - Fix Hover Issues */
+.btn-primary {
+  @apply bg-blue-600 text-white font-bold py-3 px-6 rounded-lg;
+  @apply hover:bg-blue-700 hover:text-white;
+  @apply transition-all duration-300 ease-in-out;
+  @apply transform hover:scale-105;
+  @apply shadow-lg hover:shadow-xl;
+  @apply border-0;
+  /* Ensure text is always visible */
+  color: white !important;
+}
+
+.btn-primary:hover {
+  color: white !important;
+  background-color: #1d4ed8 !important;
+}
+
+.btn-secondary {
+  @apply bg-white text-blue-600 font-bold py-3 px-6 rounded-lg border-2 border-blue-600;
+  @apply hover:bg-blue-600 hover:text-white;
+  @apply transition-all duration-300 ease-in-out;
+  @apply transform hover:scale-105;
+  @apply shadow-lg hover:shadow-xl;
+}
+
+.btn-whatsapp {
+  @apply bg-green-500 text-white font-bold py-3 px-6 rounded-lg;
+  @apply hover:bg-green-600 hover:text-white;
+  @apply transition-all duration-300 ease-in-out;
+  @apply transform hover:scale-105;
+  @apply shadow-lg hover:shadow-xl;
+  color: white !important;
+}
+
+.btn-whatsapp:hover {
+  color: white !important;
+  background-color: #16a34a !important;
+}
+
+/* Fix all button text visibility */
+button {
+  @apply font-medium;
+}
+
+button:hover {
+  @apply font-bold;
+}
+
+/* Ensure button text is always visible */
+.btn-fix {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+.btn-fix:hover {
+  opacity: 1 !important;
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-action-enter {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Custom gradient backgrounds */
+.gradient-blue {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-medical {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+}
+
+/* Medical themed colors */
+.text-medical-blue {
+  color: #2563eb;
+}
+
+.bg-medical-blue {
+  background-color: #2563eb;
+}
+
+.text-medical-green {
+  color: #059669;
+}
+
+.bg-medical-green {
+  background-color: #059669;
+}
+
+/* WhatsApp green color */
+.whatsapp-green {
+  background-color: #25D366;
+}
+
+.whatsapp-green:hover {
+  background-color: #128C7E;
+}
+
+/* Emergency red color */
+.emergency-red {
+  background-color: #DC2626;
+}
+
+.emergency-red:hover {
+  background-color: #B91C1C;
+}
+
+/* Smooth transitions for mobile interactions */
+.mobile-touch {
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-touch:active {
+  transform: scale(0.95);
+}
+
+/* UPDATED: Hero Section Specific Styles */
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .hero-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .mobile-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  main {
+    padding-bottom: 80px;
+  }
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid;
+  }
+  button {
+    border: 2px solid;
+  }
+}
