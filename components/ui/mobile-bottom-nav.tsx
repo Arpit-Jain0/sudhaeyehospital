@@ -31,12 +31,6 @@ export default function MobileBottomNav() {
       label: "WhatsApp",
       href: null,
       action: () => { window.open('https://wa.me/919876543210?text=Hello%2C%20I%20would%20like%20to%20schedule%20a%20consultation%20for%20eye%20care.%20Please%20let%20me%20know%20the%20available%20slots.', '_blank') }
-    },
-    {
-      icon: User,
-      label: "Doctors",
-      href: "/doctors",
-      action: null
     }
   ]
 
@@ -50,7 +44,7 @@ export default function MobileBottomNav() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40 md:hidden">
-      <div className="grid grid-cols-5 py-2">
+      <div className="grid grid-cols-4 py-2">
         {navItems.map((item, index) => {
           const isItemActive = isActive(item.href)
           

@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getAppointments, updateAppointmentStatus, deleteAppointment } from "@/utils/supabaseClient"
 import { formatDistanceToNow } from 'date-fns'
 
@@ -47,11 +46,6 @@ export default function AdminDashboard() {
     if (result.success) {
       fetchAppointments() // Refresh data
       
-      // Send WhatsApp notification based on status
-      const appointment = appointments.find(a => a.id === id)
-      if (appointment) {
-        sendWhatsAppNotification(appointment, newStatus)
-      }
     }
   }
 
@@ -314,6 +308,21 @@ export default function AdminDashboard() {
                             {getStatusIcon(appointment.status)}
                             {appointment.status.replace('_', ' ').toUpperCase()}
                           </Badge>
+                          <Select
+  value={appointment.status}
+  onValueChange={(newStatus) => handleStatusUpdate(appointment.id, newStatus as Appointment["status"])}
+>
+  <SelectTrigger className="w-[150px] text-sm">
+    <SelectValue />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="pending">Pending</SelectItem>
+    <SelectItem value="confirmed">Confirmed</SelectItem>
+    <SelectItem value="completed">Completed</SelectItem>
+    <SelectItem value="cancelled">Cancelled</SelectItem>
+    <SelectItem value="no_show">No Show</SelectItem>
+  </SelectContent>
+</Select>
                         </div>
                         
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-600">
@@ -333,10 +342,15 @@ export default function AdminDashboard() {
                             <Bell className="w-4 h-4" />
                             <span>{formatDistanceToNow(new Date(appointment.created_at))} ago</span>
                           </div>
+
                         </div>
                       </div>
                       
                       <div className="flex items-center gap-2 ml-4">
+                        
+                        
+                        
+                        
                         {/* WhatsApp Button */}
                         <Button
                           size="sm"

@@ -1,8 +1,8 @@
 "use client"
 
-import Image from "next/image"
+import type React from "react"
 import Link from "next/link"
-import { Phone, MapPin, Clock, Calendar, MessageCircle, ArrowLeft, CheckCircle } from 'lucide-react'
+import { Phone, MapPin, Clock, Calendar, MessageCircle, ArrowLeft, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -19,11 +19,11 @@ export default function BookAppointmentPage() {
     appointmentType: "",
     date: "",
     phone: "",
-    patientName: ""
+    patientName: "",
   })
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false)
-  
+
   // Popup state
   const [popup, setPopup] = useState<{
     isVisible: boolean
@@ -34,16 +34,16 @@ export default function BookAppointmentPage() {
     isVisible: false,
     type: "success",
     title: "",
-    message: ""
+    message: "",
   })
 
   // Test Supabase connection on component mount
   useEffect(() => {
-    testSupabaseConnection().then(result => {
+    testSupabaseConnection().then((result) => {
       if (result.success) {
-        console.log('✅ Supabase connected successfully')
+        console.log("✅ Supabase connected successfully")
       } else {
-        console.error('❌ Supabase connection failed:', result.error)
+        console.error("❌ Supabase connection failed:", result.error)
       }
     })
   }, [])
@@ -52,7 +52,7 @@ export default function BookAppointmentPage() {
   useEffect(() => {
     if (popup.isVisible) {
       const timer = setTimeout(() => {
-        setPopup(prev => ({ ...prev, isVisible: false }))
+        setPopup((prev) => ({ ...prev, isVisible: false }))
       }, 5000)
       return () => clearTimeout(timer)
     }
@@ -63,12 +63,12 @@ export default function BookAppointmentPage() {
       isVisible: true,
       type,
       title,
-      message
+      message,
     })
   }
 
   const hidePopup = () => {
-    setPopup(prev => ({ ...prev, isVisible: false }))
+    setPopup((prev) => ({ ...prev, isVisible: false }))
   }
 
   const validateForm = () => {
@@ -93,7 +93,7 @@ export default function BookAppointmentPage() {
       const selectedDate = new Date(bookingForm.date)
       const today = new Date()
       today.setHours(0, 0, 0, 0)
-      
+
       if (selectedDate < today) {
         errors.push("Please select a future date")
       }
@@ -109,13 +109,9 @@ export default function BookAppointmentPage() {
     try {
       // Validate form
       const validationErrors = validateForm()
-      
+
       if (validationErrors.length > 0) {
-        showPopup(
-          "error",
-          "Please fill all required fields",
-          validationErrors.join(". ")
-        )
+        showPopup("error", "Please fill all required fields", validationErrors.join(". "))
         setIsSubmitting(false)
         return
       }
@@ -125,7 +121,7 @@ export default function BookAppointmentPage() {
         appointment_type: bookingForm.appointmentType,
         preferred_date: bookingForm.date,
         phone_number: bookingForm.phone,
-        patient_name: bookingForm.patientName.trim() || undefined
+        patient_name: bookingForm.patientName.trim() || undefined,
       })
 
       if (result.success) {
@@ -133,7 +129,7 @@ export default function BookAppointmentPage() {
         showPopup(
           "success",
           "Appointment Booked Successfully!",
-          "Your appointment has been booked. We will contact you soon to confirm the details."
+          "Your appointment has been booked. We will contact you soon to confirm the details.",
         )
 
         // Reset form
@@ -141,25 +137,19 @@ export default function BookAppointmentPage() {
           appointmentType: "",
           date: "",
           phone: "",
-          patientName: ""
+          patientName: "",
         })
-
       } else {
         // Error from database
         showPopup(
           "error",
           "Booking Failed",
-          result.error || "Something went wrong. Please try again or call us directly."
+          result.error || "Something went wrong. Please try again or call us directly.",
         )
       }
-
     } catch (error) {
-      console.error('Form submission error:', error)
-      showPopup(
-        "error",
-        "Unexpected Error",
-        "An unexpected error occurred. Please try again or contact us directly."
-      )
+      console.error("Form submission error:", error)
+      showPopup("error", "Unexpected Error", "An unexpected error occurred. Please try again or contact us directly.")
     } finally {
       setIsSubmitting(false)
     }
@@ -179,12 +169,8 @@ export default function BookAppointmentPage() {
                 </Link>
               </Button>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  Book Your Appointment
-                </h1>
-                <p className="text-gray-600 mt-2">
-                  Schedule your consultation with our expert ophthalmologists
-                </p>
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Book Your Appointment</h1>
+                <p className="text-gray-600 mt-2">Schedule your consultation with our expert ophthalmologists</p>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-4">
@@ -206,7 +192,7 @@ export default function BookAppointmentPage() {
               <Card className="border-l-4 border-l-blue-600">
                 <CardHeader>
                   <CardTitle className="text-2xl text-blue-600">SUDHA EYE HOSPITAL</CardTitle>
-                  <CardDescription className="text-lg">
+                  <CardDescription className="text-lg text-gray-800">
                     Advanced Eye Care with Compassionate Treatment
                   </CardDescription>
                 </CardHeader>
@@ -268,13 +254,16 @@ export default function BookAppointmentPage() {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-green-800">Need Help?</h3>
-                      <p className="text-sm text-green-700">
-                        Chat with us on WhatsApp for instant support
-                      </p>
+                      <p className="text-sm text-green-700">Chat with us on WhatsApp for instant support</p>
                     </div>
-                    <Button 
+                    <Button
                       className="bg-green-600 hover:bg-green-700"
-                      onClick={() => window.open('https://wa.me/919876543210?text=Hi, I need help with booking an appointment. Please assist me.', '_blank')}
+                      onClick={() =>
+                        window.open(
+                          "https://wa.me/919876543210?text=Hi, I need help with booking an appointment. Please assist me.",
+                          "_blank",
+                        )
+                      }
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
                       Chat Now
@@ -299,7 +288,7 @@ export default function BookAppointmentPage() {
                 <CardContent className="p-8">
                   <form onSubmit={handleBookingSubmit} className="space-y-6">
                     <div>
-                      <Label htmlFor="patientName" className="text-gray-700 font-medium text-base">
+                      <Label htmlFor="patientName" className="text-white font-medium text-base">
                         Patient Name (Optional)
                       </Label>
                       <Input
@@ -307,18 +296,18 @@ export default function BookAppointmentPage() {
                         type="text"
                         placeholder="Enter patient name"
                         value={bookingForm.patientName}
-                        onChange={(e) => setBookingForm({...bookingForm, patientName: e.target.value})}
+                        onChange={(e) => setBookingForm({ ...bookingForm, patientName: e.target.value })}
                         className="h-12 text-base mt-2"
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="appointmentType" className="text-gray-700 font-medium text-base">
-                        Appointment Type <span className="text-red-500">*</span>
+                      <Label htmlFor="appointmentType" className="text-white font-medium text-base">
+                        Appointment Type <span className="text-red-200">*</span>
                       </Label>
-                      <Select 
-                        value={bookingForm.appointmentType} 
-                        onValueChange={(value) => setBookingForm({...bookingForm, appointmentType: value})}
+                      <Select
+                        value={bookingForm.appointmentType}
+                        onValueChange={(value) => setBookingForm({ ...bookingForm, appointmentType: value })}
                       >
                         <SelectTrigger className="h-12 text-base mt-2">
                           <SelectValue placeholder="Select appointment type" />
@@ -336,40 +325,40 @@ export default function BookAppointmentPage() {
                     </div>
 
                     <div>
-                      <Label htmlFor="date" className="text-gray-700 font-medium text-base">
-                        Preferred Date <span className="text-red-500">*</span>
+                      <Label htmlFor="date" className="text-white font-medium text-base">
+                        Preferred Date <span className="text-red-200">*</span>
                       </Label>
                       <Input
                         id="date"
                         type="date"
                         value={bookingForm.date}
-                        onChange={(e) => setBookingForm({...bookingForm, date: e.target.value})}
+                        onChange={(e) => setBookingForm({ ...bookingForm, date: e.target.value })}
                         className="h-12 text-base mt-2"
-                        min={new Date().toISOString().split('T')[0]}
+                        min={new Date().toISOString().split("T")[0]}
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="phone" className="text-gray-700 font-medium text-base">
-                        Phone Number <span className="text-red-500">*</span>
+                      <Label htmlFor="phone" className="text-white font-medium text-base">
+                        Phone Number <span className="text-red-200">*</span>
                       </Label>
                       <Input
                         id="phone"
                         type="tel"
                         placeholder="+91 98765 43210"
                         value={bookingForm.phone}
-                        onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
+                        onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
                         className="h-12 text-base mt-2"
                       />
                     </div>
 
-                    <Button 
-                      type="submit" 
+                    <Button
+                      type="submit"
                       disabled={isSubmitting}
                       className="w-full h-14 text-lg font-bold bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                     >
                       <Calendar className="w-5 h-5 mr-2" />
-                      {isSubmitting ? 'Booking...' : 'Book Appointment'}
+                      {isSubmitting ? "Booking..." : "Book Appointment"}
                     </Button>
                   </form>
 
@@ -391,27 +380,30 @@ export default function BookAppointmentPage() {
       {/* Emergency Contact Section */}
       <section className="py-12 bg-red-600">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Emergency Eye Care Available 24/7
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Emergency Eye Care Available 24/7</h2>
           <p className="text-red-100 mb-6 max-w-2xl mx-auto">
             For urgent eye problems, don't wait. Contact us immediately for emergency care.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              variant="secondary" 
+            <Button
+              size="lg"
+              variant="secondary"
               className="bg-white text-red-600 hover:bg-gray-100"
-              onClick={() => window.open('tel:+919876543200')}
+              onClick={() => window.open("tel:+919876543200")}
             >
               <Phone className="w-5 h-5 mr-2" />
               Emergency: +91 98765 43200
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-red-600 hover:bg-white hover:text-red-600"
-              onClick={() => window.open('https://wa.me/919876543200?text=EMERGENCY: I need immediate eye care assistance. Please help.', '_blank')}
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-red-600 hover:bg-white hover:text-red-600 bg-transparent"
+              onClick={() =>
+                window.open(
+                  "https://wa.me/919876543200?text=EMERGENCY: I need immediate eye care assistance. Please help.",
+                  "_blank",
+                )
+              }
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               Emergency WhatsApp

@@ -19,7 +19,7 @@ export default function AdminLayout({
   const [loading, setLoading] = useState(true)
 
   // Simple password protection - you can enhance this with proper authentication
-  const ADMIN_PASSWORD = "admin123" // Change this to your desired password
+  const ADMIN_PASSWORD = "SEHNHT@500076" // Change this to your desired password
 
   useEffect(() => {
     // Check if already authenticated in session
@@ -95,15 +95,6 @@ export default function AdminLayout({
                 Access Dashboard
               </Button>
             </form>
-            
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <p className="text-sm text-blue-800">
-                <strong>Demo Password:</strong> admin123
-              </p>
-              <p className="text-xs text-blue-600 mt-1">
-                Change this password in the code for production use.
-              </p>
-            </div>
           </CardContent>
         </Card>
       </div>

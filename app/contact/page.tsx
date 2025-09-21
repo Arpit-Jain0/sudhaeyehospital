@@ -148,118 +148,6 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Send className="w-5 h-5 text-blue-600" />
-                  Send us a Message
-                </CardTitle>
-                <CardDescription>
-                  Fill out the form below and we'll get back to you within 24 hours
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {isSubmitted ? (
-                  <div className="text-center py-8">
-                    <div className="bg-green-100 p-4 rounded-full w-fit mx-auto mb-4">
-                      <CheckCircle className="w-8 h-8 text-green-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      Message Sent Successfully!
-                    </h3>
-                    <p className="text-gray-600">
-                      Thank you for contacting us. We'll respond to your inquiry soon.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="name">Full Name *</Label>
-                        <Input 
-                          id="name"
-                          value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          required
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone">Phone Number *</Label>
-                        <Input 
-                          id="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input 
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        required
-                      />
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="location">Preferred Location</Label>
-                        <Select value={formData.location} onValueChange={(value) => setFormData({...formData, location: value})}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select location" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="main">Main Hospital - City Center</SelectItem>
-                            <SelectItem value="suburb">Branch Clinic - Suburb</SelectItem>
-                            <SelectItem value="downtown">Specialty Center - Downtown</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <Label htmlFor="subject">Subject</Label>
-                        <Select value={formData.subject} onValueChange={(value) => setFormData({...formData, subject: value})}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select subject" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="appointment">Appointment Inquiry</SelectItem>
-                            <SelectItem value="services">Services Information</SelectItem>
-                            <SelectItem value="insurance">Insurance Questions</SelectItem>
-                            <SelectItem value="feedback">Feedback</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea 
-                        id="message"
-                        value={formData.message}
-                        onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        placeholder="Please describe your inquiry or how we can help you..."
-                        rows={5}
-                        required
-                      />
-                    </div>
-
-                    <Button type="submit" className="w-full">
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </Button>
-                  </form>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Contact Information */}
-            <div className="space-y-6">
-              <Card>
                 <CardHeader>
                   <CardTitle>Emergency Contact</CardTitle>
                   <CardDescription>
@@ -285,6 +173,10 @@ export default function ContactPage() {
                   </div>
                 </CardContent>
               </Card>
+
+            {/* Contact Information */}
+            <div className="space-y-6">
+              
 
               <Card>
                 <CardHeader>
@@ -316,66 +208,6 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Locations */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Locations
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Visit us at any of our convenient locations across the city
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {locations.map((location, index) => (
-              <Card key={index} className="overflow-hidden">
-                <div className="relative">
-                  <Image
-                    src={location.image || "/placeholder.svg"}
-                    alt={location.name}
-                    width={300}
-                    height={200}
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg">{location.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-gray-500 mt-1 flex-shrink-0" />
-                    <p className="text-sm text-gray-600">{location.address}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-gray-500" />
-                    <p className="text-sm text-gray-600">{location.phone}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-gray-500" />
-                    <p className="text-sm text-gray-600">{location.email}</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <Clock className="w-4 h-4 text-gray-500 mt-1 flex-shrink-0" />
-                    <p className="text-sm text-gray-600">{location.hours}</p>
-                  </div>
-                  <div className="flex gap-2 pt-2">
-                    <Button size="sm" className="flex-1" onClick={() => window.open('https://maps.google.com/?q=123+Medical+Plaza+City+Center+Mumbai', '_blank')}>
-                      Get Directions
-                    </Button>
-                    <Button size="sm" variant="outline" onClick={() => window.open('tel:+919876543210')}>
-                      <Phone className="w-3 h-3 mr-1" />
-                      Call
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>

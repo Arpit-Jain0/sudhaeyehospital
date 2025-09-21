@@ -14,7 +14,6 @@ import { useState, useEffect } from "react"
 import { insertAppointment, testSupabaseConnection } from "@/utils/supabaseClient"
 import { FormPopup } from "@/components/ui/form-popup"
 
-
 // ADDED: Import animation components
 
 import {
@@ -238,7 +237,6 @@ export default function HomePage() {
     },
   ]
 
-
   return (
     <div className="min-h-screen">
       {/* UPDATED: Full-Screen Hero Section with Enhanced Animations */}
@@ -290,10 +288,10 @@ export default function HomePage() {
                       </motion.span>
                     </motion.h1>
                     <FadeInUp delay={0.9}>
-                      <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed text-center lg:text-left font-light">
+                      <p className="text-xl md:text-2xl lg:text-3xl text-white leading-relaxed text-center lg:text-left font-light">
                         Advanced Eye Care with
                         <br />
-                        <span className="text-blue-300 font-medium">Compassionate Treatment</span>
+                        <span className="text-blue-600 font-medium">Compassionate Treatment</span>
                       </p>
                     </FadeInUp>
                   </div>
@@ -320,7 +318,7 @@ export default function HomePage() {
                       <CardContent>
                         <form onSubmit={handleBookingSubmit} className="space-y-4">
                           <FadeInUp delay={1.2}>
-                            <Label htmlFor="patientName" className="text-gray-700 font-medium">
+                            <Label htmlFor="patientName" className="text-gray-900 font-medium">
                               Patient Name (Optional)
                             </Label>
                             <Input
@@ -334,7 +332,7 @@ export default function HomePage() {
                           </FadeInUp>
 
                           <FadeInUp delay={1.4}>
-                            <Label htmlFor="appointmentType" className="text-gray-700 font-medium">
+                            <Label htmlFor="appointmentType" className="text-gray-900 font-medium">
                               Appointment Type <span className="text-red-500">*</span>
                             </Label>
                             <Select
@@ -356,7 +354,7 @@ export default function HomePage() {
                           </FadeInUp>
 
                           <FadeInUp delay={1.6}>
-                            <Label htmlFor="date" className="text-gray-700 font-medium">
+                            <Label htmlFor="date" className="text-gray-900 font-medium">
                               Preferred Date <span className="text-red-500">*</span>
                             </Label>
                             <Input
@@ -370,7 +368,7 @@ export default function HomePage() {
                           </FadeInUp>
 
                           <FadeInUp delay={1.8}>
-                            <Label htmlFor="phone" className="text-gray-700 font-medium">
+                            <Label htmlFor="phone" className="text-gray-900 font-medium">
                               Phone Number <span className="text-red-500">*</span>
                             </Label>
                             <Input
