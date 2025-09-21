@@ -397,7 +397,7 @@ export default function BookAppointmentPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-red-600 hover:bg-white hover:text-red-600 bg-transparent"
+              className="bg-white text-red-600 hover:bg-gray-100"
               onClick={() =>
                 window.open(
                   "https://wa.me/919876543200?text=EMERGENCY: I need immediate eye care assistance. Please help.",
