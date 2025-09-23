@@ -4,7 +4,7 @@ import type React from "react"
 
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Clock, Star, CheckCircle, Calendar, MessageCircle, Award, Users, Eye, Stethoscope } from "lucide-react"
+import { Phone, Clock, Star, CheckCircle, Calendar, MessageCircle, Award, Users, Eye, Stethoscope ,Shield} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -15,7 +15,6 @@ import { insertAppointment, testSupabaseConnection } from "@/utils/supabaseClien
 import { FormPopup } from "@/components/ui/form-popup"
 
 // ADDED: Import animation components
-
 import {
   AnimatedSection,
   AnimatedCard,
@@ -237,6 +236,30 @@ export default function HomePage() {
     },
   ]
 
+  const empanelledPartners = [
+    {
+      name: "India Government Mint",
+      image: "/igmint.png",
+      caption: "Government of India Mint (SPMCIL)",
+    },
+    {
+      name: "CSIR–IICT",
+      image: "/iict.jpeg",
+      caption: "Indian Institute of Chemical Technology",
+    },
+    {
+      name: "ICMR–NIN",
+      image: "/nin.jpeg",
+      caption: "National Institute of Nutrition",
+    },
+    {
+      name: "CSIR–CCMB",
+      image: "/ccmb.jpeg",
+      caption: "Centre for Cellular & Molecular Biology",
+    },
+  ]
+
+
   return (
     <div className="min-h-screen">
       {/* UPDATED: Full-Screen Hero Section with Enhanced Animations */}
@@ -374,7 +397,7 @@ export default function HomePage() {
                             <Input
                               id="phone"
                               type="tel"
-                              placeholder="+91 98765 43210"
+                              placeholder="+91 99858 07860"
                               value={bookingForm.phone}
                               onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
                               className="h-12 text-base transition-all duration-300 focus:scale-105"
@@ -420,7 +443,7 @@ export default function HomePage() {
                     transition={{ duration: 0.3 }}
                   >
                     <Phone className="w-5 h-5 text-blue-400" />
-                    <span className="text-lg font-medium">+91 98765 43210</span>
+                    <span className="text-lg font-medium">+91 99858 07860</span>
                   </motion.div>
                   <motion.div
                     className="flex items-center gap-3 bg-black/30 backdrop-blur-sm px-6 py-3 rounded-full"
@@ -448,7 +471,7 @@ export default function HomePage() {
           <Button
             size="lg"
             className="bg-green-500 hover:bg-green-600 text-white rounded-full w-16 h-16 shadow-2xl transition-all duration-300"
-            onClick={() => window.open("https://wa.me/919876543210?text=Hi, I want to book an appointment.", "_blank")}
+            onClick={() => window.open("https://wa.me/919121479998?text=Hi, I want to book an appointment.", "_blank")}
           >
             <MessageCircle className="w-8 h-8" />
           </Button>
@@ -515,6 +538,144 @@ export default function HomePage() {
         </section>
       </AnimatedSection>
 
+      <AnimatedSection>
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-10 items-center">
+              <SlideInLeft>
+                <AnimatedImage
+                  src={"/placeholder.svg?height=560&width=640&query=portrait%20of%20experienced%20eye%20surgeon"}
+                  alt="Senior Ophthalmologist"
+                  width={640}
+                  height={560}
+                  className="rounded-2xl shadow-xl w-full h-auto object-cover"
+                />
+              </SlideInLeft>
+              <SlideInRight delay={0.15}>
+                <div className="max-w-xl">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Doctor</h2>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Dr. A. R. Sharma, MS (Ophthal), FRCS, is a renowned cataract and refractive surgeon with 20+ years
+                    of clinical expertise. He has performed over 25,000 successful procedures and is known for his
+                    compassionate, evidence‑based care.
+                  </p>
+                  <div className="grid sm:grid-cols-3 gap-4">
+                    <div className="bg-gray-50 p-4 rounded-xl">
+                      <div className="flex items-center gap-2 font-semibold text-gray-900">
+                        <Stethoscope className="w-5 h-5 text-blue-600" />
+                        20+ Years
+                      </div>
+                      <p className="text-gray-600 mt-1 text-sm">of surgical experience</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-xl">
+                      <div className="flex items-center gap-2 font-semibold text-gray-900">
+                        <Award className="w-5 h-5 text-blue-600" />
+                        25k+ Surgeries
+                      </div>
+                      <p className="text-gray-600 mt-1 text-sm">with excellent outcomes</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-xl">
+                      <div className="flex items-center gap-2 font-semibold text-gray-900">
+                        <CheckCircle className="w-5 h-5 text-blue-600" />
+                        Patient‑First
+                      </div>
+                      <p className="text-gray-600 mt-1 text-sm">personalized treatment plans</p>
+                    </div>
+                  </div>
+                </div>
+              </SlideInRight>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* NEW: Optometrists Section below Doctor */}
+      <AnimatedSection>
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <FadeInUp className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Optometrists</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                A skilled team ensuring precise vision assessment, pre‑op counseling, and post‑op care.
+              </p>
+            </FadeInUp>
+
+            <StaggeredContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { name: "Ms. Priya Mehta, B.Optom", focus: "Contact Lens & Low Vision" },
+                { name: "Mr. Arjun Rao, M.Optom", focus: "Pediatric & Binocular Vision" },
+                { name: "Ms. Nisha Verma, B.Optom", focus: "Refraction & Pre‑op Workup" },
+                { name: "Mr. Karan Jain, M.Optom", focus: "Glaucoma & Retina Screening" },
+              ].map((opt, idx) => (
+                <StaggeredItem key={idx}>
+                  <AnimatedCard delay={idx * 0.08} className="h-full">
+                    <Card className="group h-full hover:shadow-lg transition-all duration-300">
+                      <div className="relative overflow-hidden rounded-t-xl">
+                        <AnimatedImage
+                          src={`/placeholder.svg?height=260&width=400&query=professional%20optometrist%20portrait%20${idx + 1}`}
+                          alt={opt.name}
+                          width={400}
+                          height={260}
+                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          delay={idx * 0.08}
+                        />
+                      </div>
+                      <CardHeader>
+                        <CardTitle className="text-base">{opt.name}</CardTitle>
+                        <CardDescription>{opt.focus}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <Users className="w-4 h-4 text-blue-600" />
+                          Dedicated patient support
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </AnimatedCard>
+                </StaggeredItem>
+              ))}
+            </StaggeredContainer>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* NEW: Empanelled With logos above Why Choose section */}
+      <AnimatedSection>
+        <section className="py-14">
+          <div className="container mx-auto px-4">
+            <FadeInUp className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Empanelled With</h2>
+            </FadeInUp>
+
+            <StaggeredContainer className="grid grid-cols-2 md:grid-cols-4 gap-6 items-stretch">
+              {empanelledPartners.map((p, i) => (
+                <StaggeredItem key={p.name}>
+                  <AnimatedCard delay={i * 0.06} className="h-full">
+                    <Card className="h-full">
+                      <div className="flex items-center justify-center p-4 h-28">
+                        <AnimatedImage
+                          src={p.image}
+                          alt={p.name}
+                          width={240}
+                          height={100}
+                          className="max-h-28 w-auto object-contain"
+                          delay={i * 0.06}
+                        />
+                      </div>
+                    </Card>
+                  </AnimatedCard>
+                  <CardContent className="pt-0">
+                        <p className="text-center text-sm text-gray-600">{p.caption}</p>
+                      </CardContent>
+                </StaggeredItem>
+              ))}
+            </StaggeredContainer>
+          </div>
+        </section>
+      </AnimatedSection>
+
+
+
       {/* UPDATED: Why Choose Us Section with Animations */}
       <AnimatedSection>
         <section className="py-16">
@@ -524,6 +685,11 @@ export default function HomePage() {
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose Our Eye Hospital?</h2>
                 <div className="space-y-6">
                   {[
+                    {
+                      icon: Shield,
+                      title: "Insurance",
+                      desc: "Our eye hospital is empanelled with all major insurance providers, including CGHS and EHS, ensuring accessible and hassle-free care for all patients.",
+                    },
                     {
                       icon: Award,
                       title: "Expert Specialists",
@@ -544,6 +710,8 @@ export default function HomePage() {
                       title: "Personalized Care",
                       desc: "Every patient receives individualized treatment plans tailored to their specific needs and conditions.",
                     },
+                    
+
                   ].map((item, index) => (
                     <FadeInUp key={index} delay={index * 0.1}>
                       <motion.div className="flex gap-4" whileHover={{ x: 10 }} transition={{ duration: 0.3 }}>
@@ -669,10 +837,10 @@ export default function HomePage() {
                   size="lg"
                   variant="outline"
                   className="bg-white text-blue-600 hover:bg-gray-100 transition-all duration-300 hover:scale-105"
-                  onClick={() => window.open("tel:+919876543210")}
+                  onClick={() => window.open("tel:+919985807860")}
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Call: +91 98765 43210
+                  Call: +91 99858 07860
                 </Button>
               </div>
             </FadeInUp>

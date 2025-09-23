@@ -317,9 +317,9 @@ export default function ServicesPage() {
                   size="lg"
                   variant="outline"
                   className="bg-white text-blue-600 hover:bg-gray-100 transition-all duration-300 hover:scale-105"
-                  onClick={() => window.open("tel:+919876543210")}
+                  onClick={() => window.open("tel:+919985907860")}
                 >
-                  Call: +91 98765 43210
+                  Call: +91 99858 07860
                 </Button>
               </div>
             </FadeInUp>

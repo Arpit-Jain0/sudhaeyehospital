@@ -11,7 +11,7 @@ interface NotificationProps {
   adminPhoneNumber?: string
 }
 
-export default function NotificationSystem({ adminPhoneNumber = "919876543210" }: NotificationProps) {
+export default function NotificationSystem({ adminPhoneNumber = "919985807860" }: NotificationProps) {
   const [notifications, setNotifications] = useState<any[]>([])
   const [isVisible, setIsVisible] = useState(false)
 

@@ -201,7 +201,7 @@ export default function BookAppointmentPage() {
                     <Phone className="w-5 h-5 text-blue-600" />
                     <div>
                       <p className="font-medium">Call Us</p>
-                      <p className="text-gray-600">+91 98765 43210</p>
+                      <p className="text-gray-600">+91 99858 07860</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -260,7 +260,7 @@ export default function BookAppointmentPage() {
                       className="bg-green-600 hover:bg-green-700"
                       onClick={() =>
                         window.open(
-                          "https://wa.me/919876543210?text=Hi, I need help with booking an appointment. Please assist me.",
+                          "https://wa.me/919985807860?text=Hi, I need help with booking an appointment. Please assist me.",
                           "_blank",
                         )
                       }
@@ -345,7 +345,7 @@ export default function BookAppointmentPage() {
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 99858 07860"
                         value={bookingForm.phone}
                         onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
                         className="h-12 text-base mt-2"

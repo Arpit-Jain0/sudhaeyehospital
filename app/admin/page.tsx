@@ -66,13 +66,13 @@ export default function AdminDashboard() {
     
     switch (status) {
       case 'confirmed':
-        message = `Hi ${patientName}, your appointment for ${appointment.appointment_type} on ${appointment.preferred_date} has been CONFIRMED. Please arrive 15 minutes early. Contact: +91 98765 43210`
+        message = `Hi ${patientName}, your appointment for ${appointment.appointment_type} on ${appointment.preferred_date} has been CONFIRMED. Please arrive 15 minutes early. Contact: +91 99858 07860`
         break
       case 'cancelled':
-        message = `Hi ${patientName}, your appointment for ${appointment.appointment_type} on ${appointment.preferred_date} has been CANCELLED. Please call us to reschedule. Contact: +91 98765 43210`
+        message = `Hi ${patientName}, your appointment for ${appointment.appointment_type} on ${appointment.preferred_date} has been CANCELLED. Please call us to reschedule. Contact: +91 99858 07860`
         break
       case 'completed':
-        message = `Hi ${patientName}, thank you for visiting us today. Please follow the prescribed treatment and contact us if you have any concerns. Contact: +91 98765 43210`
+        message = `Hi ${patientName}, thank you for visiting us today. Please follow the prescribed treatment and contact us if you have any concerns. Contact: +91 99858 07860`
         break
     }
     

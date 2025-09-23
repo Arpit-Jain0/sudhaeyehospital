@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { Menu, X, Phone, Calendar, MessageCircle, Eye } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import Image from "next/image";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -35,9 +36,15 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="bg-blue-600 p-2 rounded-lg">
-              <Eye className="w-6 h-6 text-white" />
-            </div>
+            <div className="p-2 rounded-lg">
+              <Image
+          src="/logo.png" // replace with actual image path
+          alt="Sudha Eye Hospital Logo"
+          width={64}
+          height={64}
+          className="w-21 h-21 object-contain"
+        />
+      </div>
             <div>
               <div className="font-bold text-xl text-gray-900">Sudha Eye Hospital</div>
             </div>
@@ -66,7 +73,7 @@ export default function Header() {
               variant="outline" 
               size="sm"
               className="transition-all duration-200 hover:scale-105"
-              onClick={() => window.open('tel:+919876543210')}
+              onClick={() => window.open('tel:+919985807860')}
             >
               <Phone className="w-4 h-4 mr-2" />
               Call Now
@@ -134,7 +141,7 @@ export default function Header() {
                   variant="outline" 
                   className="w-full transition-all duration-200 hover:scale-105"
                   onClick={() => {
-                    window.open('tel:+919876543210')
+                    window.open('tel:+919985807860')
                     setIsOpen(false)
                   }}
                 >
@@ -145,7 +152,7 @@ export default function Header() {
                   variant="outline" 
                   className="w-full border-green-500 text-green-600 hover:bg-green-50 transition-all duration-200 hover:scale-105"
                   onClick={() => {
-                    window.open('https://wa.me/919876543210?text=Hello%2C%20I%20would%20like%20to%20schedule%20a%20consultation%20for%20eye%20care.%20Please%20let%20me%20know%20the%20available%20slots.', '_blank')
+                    window.open('https://wa.me/919121479998?text=Hello%2C%20I%20would%20like%20to%20schedule%20a%20consultation%20for%20eye%20care.%20Please%20let%20me%20know%20the%20available%20slots.', '_blank')
                     setIsOpen(false)
                   }}
                 >

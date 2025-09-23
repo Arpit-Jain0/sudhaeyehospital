@@ -4,6 +4,8 @@ import Link from "next/link"
 import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Youtube, Eye, Calendar, MessageCircle } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import Image from "next/image";
+
 
 export default function Footer() {
   const quickLinks = [
@@ -37,9 +39,15 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <Eye className="w-6 h-6 text-white" />
-              </div>
+            <div className="p-2 rounded-lg">
+              <Image
+          src="/logo.png" // replace with actual image path
+          alt="Sudha Eye Hospital Logo"
+          width={64}
+          height={64}
+          className="w-21 h-21 object-contain"
+        />
+      </div>
               <div>
                 <div className="font-bold text-xl">Sudha</div>
                 <div className="text-sm text-gray-400">Eye Hospital</div>
@@ -103,23 +111,24 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0" />
                 <div className="text-sm text-gray-400">
-                  <p>123 Medical Plaza</p>
-                  <p>City Center, Mumbai - 400001</p>
+                  <p>Surya Tower, Opposite, Hanuman Temple Rd, MBD Complex</p>
+                  <p>HMT Nagar, Nacharam, Hyderabad, Secunderabad, Telangana</p>
+                  <p>500076</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-blue-400" />
-                <span className="text-sm text-gray-400">+91 98765 43210</span>
+                <span className="text-sm text-gray-400">+91 99858 07860</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-sm text-gray-400">info@eyehospital.com</span>
+                <span className="text-sm text-gray-400">sudhaeyehospital.nacharam@gmail.com</span>
               </div>
               <div className="flex items-start gap-3">
                 <Clock className="w-4 h-4 text-blue-400 mt-1" />
                 <div className="text-sm text-gray-400">
-                  <p>Mon-Sat: 8:00 AM - 8:00 PM</p>
-                  <p>Sunday: 9:00 AM - 5:00 PM</p>
+                  <p>Mon-Sat: 11:00 AM - 10:00 PM</p>
+                  <p>Sunday: Closed</p>
                 </div>
               </div>
             </div>
@@ -134,7 +143,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-gray-400">
-              © 2024 Sudha Eye Hospital. All rights reserved.
+              © 2025 Sudha Eye Hospital. All rights reserved.
             </div>
             <div className="flex gap-6 text-sm text-gray-400">
               <Link href="#" className="hover:text-white transition-colors">

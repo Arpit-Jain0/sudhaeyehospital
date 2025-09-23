@@ -31,19 +31,17 @@ export default function AppointmentPage() {
     emergencyContact: "",
     insurance: ""
   })
-
+  
   const doctors = [
     { id: "dr-rajesh", name: "Dr. Rajesh Agarwal", specialty: "Cataract & LASIK Surgery", fee: "₹800" },
     { id: "dr-priya", name: "Dr. Priya Sharma", specialty: "Retina Specialist", fee: "₹700" },
     { id: "dr-amit", name: "Dr. Amit Kumar", specialty: "Glaucoma & Corneal Diseases", fee: "₹600" },
     { id: "dr-sunita", name: "Dr. Sunita Patel", specialty: "Pediatric Ophthalmology", fee: "₹650" }
   ]
-
   const timeSlots = [
     "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
     "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM"
   ]
-
   const appointmentTypes = [
     { id: "consultation", name: "General Consultation", duration: "30 mins", price: "₹500-800" },
     { id: "followup", name: "Follow-up Visit", duration: "20 mins", price: "₹300-500" },
@@ -93,7 +91,7 @@ export default function AppointmentPage() {
               <Button 
                 variant="outline" 
                 className="flex-1"
-                onClick={() => window.open('https://wa.me/919876543210?text=Hi, my appointment has been booked successfully. Here are the details: Appointment ID: APT-2024-001', '_blank')}
+                onClick={() => window.open('https://wa.me/919121479998?text=Hi, my appointment has been booked successfully. Here are the details: Appointment ID: APT-2024-001', '_blank')}
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp
@@ -124,7 +122,7 @@ export default function AppointmentPage() {
               <Button 
                 variant="outline" 
                 className="hidden sm:flex"
-                onClick={() => window.open('https://wa.me/919876543210?text=Hi, I need help with booking an appointment. Please assist me.', '_blank')}
+                onClick={() => window.open('https://wa.me/919121479998?text=Hi, I need help with booking an appointment. Please assist me.', '_blank')}
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp Support

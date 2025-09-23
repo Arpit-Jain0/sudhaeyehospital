@@ -33,7 +33,7 @@ export default function ContactPage() {
     {
       name: "Main Hospital - City Center",
       address: "123 Medical Plaza, City Center, Mumbai - 400001",
-      phone: "+91 98765 43210",
+      phone: "+91 99858 07860",
       email: "info@eyehospital.com",
       hours: "Mon-Sat: 8:00 AM - 8:00 PM, Sun: 9:00 AM - 5:00 PM",
       image: "/placeholder.svg?height=200&width=300"
@@ -61,28 +61,28 @@ export default function ContactPage() {
       icon: Phone,
       title: "Call Us",
       description: "Speak directly with our team",
-      contact: "+91 98765 43210",
+      contact: "+91 99858 07860",
       action: "Call Now",
       color: "blue",
-      link: "tel:+919876543210"
+      link: "tel:+919985807860"
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
       description: "Quick consultation via WhatsApp",
-      contact: "+91 98765 43210",
+      contact: "+91 91214 79998",
       action: "Chat Now",
       color: "green",
-      link: "https://wa.me/919876543210"
+      link: "https://wa.me/919121479998"
     },
     {
       icon: Mail,
       title: "Email Us",
       description: "Send us your queries",
-      contact: "info@eyehospital.com",
+      contact: "sudhaeyehospital.nacharam@gmail.com",
     action: "Send Email",
     color: "purple",
-    link: "mailto:info@eyehospital.com"
+    link: "mailto:sudhaeyehospital.nacharam@gmail.com"
     }
   ]
 
@@ -148,6 +148,118 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Send className="w-5 h-5 text-blue-600" />
+                  Send us a Message
+                </CardTitle>
+                <CardDescription>
+                  Fill out the form below and we'll get back to you within 24 hours
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {isSubmitted ? (
+                  <div className="text-center py-8">
+                    <div className="bg-green-100 p-4 rounded-full w-fit mx-auto mb-4">
+                      <CheckCircle className="w-8 h-8 text-green-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      Message Sent Successfully!
+                    </h3>
+                    <p className="text-gray-600">
+                      Thank you for contacting us. We'll respond to your inquiry soon.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="name">Full Name *</Label>
+                        <Input 
+                          id="name"
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">Phone Number *</Label>
+                        <Input 
+                          id="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="email">Email Address *</Label>
+                      <Input 
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        required
+                      />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="location">Preferred Location</Label>
+                        <Select value={formData.location} onValueChange={(value) => setFormData({...formData, location: value})}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select location" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="main">Main Hospital - City Center</SelectItem>
+                            <SelectItem value="suburb">Branch Clinic - Suburb</SelectItem>
+                            <SelectItem value="downtown">Specialty Center - Downtown</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label htmlFor="subject">Subject</Label>
+                        <Select value={formData.subject} onValueChange={(value) => setFormData({...formData, subject: value})}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select subject" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="appointment">Appointment Inquiry</SelectItem>
+                            <SelectItem value="services">Services Information</SelectItem>
+                            <SelectItem value="insurance">Insurance Questions</SelectItem>
+                            <SelectItem value="feedback">Feedback</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="message">Message *</Label>
+                      <Textarea 
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        placeholder="Please describe your inquiry or how we can help you..."
+                        rows={5}
+                        required
+                      />
+                    </div>
+
+                    <Button type="submit" className="w-full">
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </Button>
+                  </form>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Contact Information */}
+            <div className="space-y-6">
+              <Card>
                 <CardHeader>
                   <CardTitle>Emergency Contact</CardTitle>
                   <CardDescription>
@@ -160,23 +272,19 @@ export default function ContactPage() {
                       <Phone className="w-5 h-5 text-red-600" />
                       <div>
                         <p className="font-semibold text-red-900">24/7 Emergency Hotline</p>
-                        <p className="text-red-700">+91 98765 43200</p>
+                        <p className="text-red-700">+91 99858 07860</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
                       <MessageCircle className="w-5 h-5 text-green-600" />
                       <div>
                         <p className="font-semibold text-green-900">WhatsApp Emergency</p>
-                        <p className="text-green-700">+91 98765 43200</p>
+                        <p className="text-green-700">+91 9121479998</p>
                       </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-
-            {/* Contact Information */}
-            <div className="space-y-6">
-              
 
               <Card>
                 <CardHeader>
@@ -187,14 +295,14 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-blue-600 mt-1" />
                     <div>
                       <p className="font-medium">Email</p>
-                      <p className="text-gray-600">info@eyehospital.com</p>
+                      <p className="text-gray-600">sudhaeyehospital.nacharam@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Phone className="w-5 h-5 text-blue-600 mt-1" />
                     <div>
                       <p className="font-medium">Main Phone</p>
-                      <p className="text-gray-600">+91 98765 43210</p>
+                      <p className="text-gray-600">+91 99858 07860</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -211,6 +319,9 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Locations */}
+      
 
       {/* Map Section */}
       <section className="py-16 bg-gray-50">

@@ -127,7 +127,7 @@ export default function AdminLayout({
       {children}
       
       {/* Real-time Notification System */}
-      <NotificationSystem adminPhoneNumber="919876543210" />
+      <NotificationSystem adminPhoneNumber="919985807860" />
     </div>
   )
 }
