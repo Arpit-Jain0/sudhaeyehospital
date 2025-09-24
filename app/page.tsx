@@ -239,7 +239,7 @@ export default function HomePage() {
   const empanelledPartners = [
     {
       name: "India Government Mint",
-      image: "/igmint.png",
+      image: "/mint.jpeg",
       caption: "Government of India Mint (SPMCIL)",
     },
     {
@@ -539,55 +539,65 @@ export default function HomePage() {
       </AnimatedSection>
 
       <AnimatedSection>
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-10 items-center">
-              <SlideInLeft>
-                <AnimatedImage
-                  src={"/placeholder.svg?height=560&width=640&query=portrait%20of%20experienced%20eye%20surgeon"}
-                  alt="Senior Ophthalmologist"
-                  width={640}
-                  height={560}
-                  className="rounded-2xl shadow-xl w-full h-auto object-cover"
-                />
-              </SlideInLeft>
-              <SlideInRight delay={0.15}>
-                <div className="max-w-xl">
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Doctor</h2>
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    Dr. A. R. Sharma, MS (Ophthal), FRCS, is a renowned cataract and refractive surgeon with 20+ years
-                    of clinical expertise. He has performed over 25,000 successful procedures and is known for his
-                    compassionate, evidence‑based care.
-                  </p>
-                  <div className="grid sm:grid-cols-3 gap-4">
-                    <div className="bg-gray-50 p-4 rounded-xl">
-                      <div className="flex items-center gap-2 font-semibold text-gray-900">
-                        <Stethoscope className="w-5 h-5 text-blue-600" />
-                        20+ Years
-                      </div>
-                      <p className="text-gray-600 mt-1 text-sm">of surgical experience</p>
-                    </div>
-                    <div className="bg-gray-50 p-4 rounded-xl">
-                      <div className="flex items-center gap-2 font-semibold text-gray-900">
-                        <Award className="w-5 h-5 text-blue-600" />
-                        25k+ Surgeries
-                      </div>
-                      <p className="text-gray-600 mt-1 text-sm">with excellent outcomes</p>
-                    </div>
-                    <div className="bg-gray-50 p-4 rounded-xl">
-                      <div className="flex items-center gap-2 font-semibold text-gray-900">
-                        <CheckCircle className="w-5 h-5 text-blue-600" />
-                        Patient‑First
-                      </div>
-                      <p className="text-gray-600 mt-1 text-sm">personalized treatment plans</p>
-                    </div>
-                  </div>
+  <section className="py-16">
+    <div className="container mx-auto px-4">
+      <div className="grid lg:grid-cols-5 gap-10 items-center">
+
+        {/* Image Section */}
+        <div className="md:col-span-2 flex justify-center">
+          <Image
+            src={"/doctor.jpeg"}
+            alt="Senior Ophthalmologist"
+            width={500}
+            height={500}
+            className="rounded-3xl shadow-xl w-[500px] h-[500px] object-cover"
+          />
+        </div>
+
+        {/* Text Section */}
+        <div className="md:col-span-3">
+          <div className="max-w-full">
+            <h1 className="text-4xl md:text-4xl font-bold text-gray-900 mb-4 text-center">Meet Our Doctor</h1>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              Dr. Pulgurti Ramgopal is a highly skilled and compassionate Ophthalmologist and Eye Surgeon. 
+              With 34 years of experience, he is known for his caring nature and dedication to personalized care. 
+              He earned his MBBS from the University of Pune in 1990 and his post-graduate DO in 2001. 
+              Fluent in English and Hindi, he is committed to being available for his patients whenever they need him. 
+              He offers a wide range of treatments including various types of cataract surgeries, LASIK, and more — 
+              all in a comfortable and holistic environment.
+            </p>
+
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="bg-gray-50 p-4 rounded-xl">
+                <div className="flex items-center gap-2 font-semibold text-gray-900">
+                  <Stethoscope className="w-5 h-5 text-blue-600" />
+                  34+ Years
                 </div>
-              </SlideInRight>
+                <p className="text-gray-600 mt-1 text-sm">of surgical experience</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-xl">
+                <div className="flex items-center gap-2 font-semibold text-gray-900">
+                  <Award className="w-5 h-5 text-blue-600" />
+                  Multiple Surgeries
+                </div>
+                <p className="text-gray-600 mt-1 text-sm">with excellent outcomes</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-xl">
+                <div className="flex items-center gap-2 font-semibold text-gray-900">
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
+                  Patient‑First
+                </div>
+                <p className="text-gray-600 mt-1 text-sm">personalized treatment plans</p>
+              </div>
             </div>
           </div>
-        </section>
-      </AnimatedSection>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
+
 
       {/* NEW: Optometrists Section below Doctor */}
       <AnimatedSection>
@@ -641,38 +651,44 @@ export default function HomePage() {
 
       {/* NEW: Empanelled With logos above Why Choose section */}
       <AnimatedSection>
-        <section className="py-14">
-          <div className="container mx-auto px-4">
-            <FadeInUp className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Empanelled With</h2>
-            </FadeInUp>
+  <section className="py-16 bg-white">
+    <div className="container mx-auto px-4">
+      <FadeInUp className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Empanelled With</h2>
+      </FadeInUp>
 
-            <StaggeredContainer className="grid grid-cols-2 md:grid-cols-4 gap-6 items-stretch">
-              {empanelledPartners.map((p, i) => (
-                <StaggeredItem key={p.name}>
-                  <AnimatedCard delay={i * 0.06} className="h-full">
-                    <Card className="h-full">
-                      <div className="flex items-center justify-center p-4 h-28">
-                        <AnimatedImage
-                          src={p.image}
-                          alt={p.name}
-                          width={240}
-                          height={100}
-                          className="max-h-28 w-auto object-contain"
-                          delay={i * 0.06}
-                        />
-                      </div>
-                    </Card>
-                  </AnimatedCard>
-                  <CardContent className="pt-0">
-                        <p className="text-center text-sm text-gray-600">{p.caption}</p>
-                      </CardContent>
-                </StaggeredItem>
-              ))}
-            </StaggeredContainer>
-          </div>
-        </section>
-      </AnimatedSection>
+      <StaggeredContainer className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {empanelledPartners.map((p, i) => (
+          <StaggeredItem key={p.name}>
+            <AnimatedCard delay={i * 0.06}>
+              <Card className="flex flex-col items-center p-4 rounded-xl shadow-sm hover:shadow-md transition overflow-hidden min-h-[200px]">
+                {/* Image wrapper */}
+                <div className="flex items-center justify-center w-full min-h-[100px] max-h-[240px] overflow-hidden mb-4">
+                  <AnimatedImage
+                    src={p.image}
+                    alt={p.name}
+                    width={240}
+                    height={100}
+                    className="object-contain w-auto max-h-full"
+                    delay={i * 0.06}
+                  />
+                </div>
+
+                {/* Caption */}
+                <CardContent className="p-0 text-center">
+                  <p className="text-sm text-gray-600">{p.caption}</p>
+                </CardContent>
+              </Card>
+            </AnimatedCard>
+          </StaggeredItem>
+        ))}
+      </StaggeredContainer>
+    </div>
+  </section>
+</AnimatedSection>
+
+
+
 
 
 
